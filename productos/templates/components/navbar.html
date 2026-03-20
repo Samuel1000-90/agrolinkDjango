@@ -1,0 +1,146 @@
+{% load static%}
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand brand-logo">
+            <img src="{% static 'logo/logoAgrolink.jpeg' %}" alt="Logo Agrolink">
+            Agrolink
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+
+            <!-- BÚSQUEDA -->
+            <div class="mx-auto d-none d-lg-block">
+                <form class="d-flex search-box" method="get">
+                    <input type="search" name="busqueda" placeholder="Buscar productos...">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link me-3">Inicio</a>
+                </li>
+
+                <!-- MEGA MENU CATEGORÍAS DINÁMICO -->
+                <li class="nav-item dropdown position-static">
+                    <a class="nav-link dropdown-toggle me-3" data-bs-toggle="dropdown" href="javascript:void(0);">Categorías</a>
+
+                    <div class="dropdown-menu mega-menu-dropdown">
+                        <div class="container-fluid">
+                            <!-- Verificar si hay categorías disponibles -->
+                            <div>
+                                <div class="row g-2">
+                                    <!-- Mostrar categorías en columnas más compactas -->
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                                        <div class="categoria-item p-2">
+                                            <h6 class="mega-title">Categoría</h6>
+                                            <div class="mega-list">
+                                                <a>Ver Categoría</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mensaje cuando no hay categorías -->
+                            <div>
+                                <div class="text-center py-3">
+                                    <i class="bi bi-tags text-muted mb-2" style="font-size: 1.5rem;"></i>
+                                    <p class="text-muted mb-0 small">No hay categorías disponibles</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+
+                <!-- SERVICIOS DINÁMICOS -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle me-3" data-bs-toggle="dropdown">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <!-- Verificar si hay categorías de servicios disponibles -->
+                        <th:block>
+                            <!-- Iterar sobre las categorías de servicios -->
+                            <th:block>
+                                <li><h6 class="dropdown-header text-success fw-bold">Categoría</h6></li>
+                                <!-- Mostrar hasta 3 servicios por categoría -->
+                                <th:block>
+                                    <li><a class="dropdown-item small" href="#">Descripción del servicio</a></li>
+                                </th:block>
+                                <!-- Enlace para ver más servicios de esta categoría si hay más de 3 -->
+                                <li>
+                                    <a class="dropdown-item text-muted small fst-italic">Ver todos</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                            </th:block>
+                        </th:block>
+
+                        <!-- Mensaje cuando no hay servicios -->
+                        <li>
+                            <span class="dropdown-item-text text-muted small">No hay servicios disponibles</span>
+                        </li>
+
+                        <!-- Enlace para ver todos los servicios -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center fw-bold text-success" href="/servicios">
+                            <i class="bi bi-grid me-1"></i>Ver todos los servicios
+                        </a></li>
+                    </ul>
+                </li>
+
+
+                <!-- MIS PEDIDOS -->
+                <li class="nav-item me-3">
+                    <a class="nav-link" style="color:#2f6b31; font-weight:600;">
+                        <i class="bi bi-box-seam me-1"></i>Mis Pedidos
+                    </a>
+                </li>
+
+                <!-- CARRITO -->
+                <li class="nav-item position-relative me-3">
+                    <a class="nav-link">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </li>
+
+                <!-- PERFIL -->
+                <li class="nav-item dropdown">
+                    <!--
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                        <img class="profile-img me-2" alt="Perfil">
+                        <span>Cuenta</span>
+                    </a>
+                    -->
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                        <img src="https://i.pravatar.cc/40?img=10" class="profile-img me-2" alt="Perfil">
+                        <span>{{ nombreUsuario|default:"Cuenta" }}</span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item"><i class="bi bi-person me-2"></i>Mi perfil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configuración</a></li>
+                        <li><hr></li>
+                        <li>
+                            <form method="post" style="margin: 0;">
+                                <button type="submit" class="dropdown-item text-danger" style="border: none; background: none; cursor: pointer; width: 100%; text-align: left;">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
