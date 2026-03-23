@@ -1,0 +1,61 @@
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.register-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.role-field {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.role-field.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.role-badge.cliente {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.role-badge.productor {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.role-badge.transportista {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.role-badge.servicio {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}

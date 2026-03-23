@@ -4,8 +4,8 @@
 
         <!-- Imagen del producto -->
         <div class="position-relative">
-            {% if producto.imagen_principal %}
-            <img src="{{ producto.imagen_principal.url_imagen.url }}" 
+            {% if producto.imagen_principal_url %}
+            <img src="{{ producto.imagen_principal_url }}" alt="{{ producto.nombre_producto }}"      
             alt="{{ producto.nombre_producto }}"
             class="img-fluid"
             style="object-fit: cover; height: 200px; width: 100%;">

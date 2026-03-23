@@ -1,84 +1,87 @@
 {% load static %}
 {% if destacado %}
-<section class="container my-5" data-aos="fade-up">
 
-    <div class="featured">
 
-        <!-- Imagen del producto -->
-        {% if destacado.imagen %}
-        <img src="{{ destacado.imagen.url }}" alt="Producto destacado">
-        {% else %}
-        <img src="{% static 'img/producto_default.jpg' %}" alt="Producto destacado">
-        {% endif %}
+<div class="featured">
 
-        <div class="featured-body">
+    <!-- Imagen del producto -->
+    {% if destacado.imagen_principal_url %}
+    <img src="{{ destacado.imagen_principal_url }}" alt="{{ destacado.nombre_producto }}">
+    {% endif %}
 
-            <h2 style="color: #2f6b31;">Producto destacado</h2>
 
-            <p class="lead text-muted">
-                {{ destacado.descripcion }}
-            </p>
+    <div class="featured-body">
 
-            <div class="row mt-4">
+        <h2 style="color: #2f6b31;">Producto destacado</h2>
 
-                <div class="col-md-6">
+        <p class="lead text-muted">
+            {{ destacado.descripcion_producto }}
+        </p>
 
-                    <h5>Características:</h5>
+        <div class="row mt-4">
 
-                    <ul class="list-unstyled">
+            <div class="col-md-6">
 
-                        <li>
-                            <i class="bi bi-check-circle text-success me-2"></i>
-                            Producto más vendido
-                        </li>
+                <h5>Características:</h5>
 
-                        <li>
-                            <i class="bi bi-check-circle text-success me-2"></i>
-                            <span>Categoría:</span>
-                            <span>{{ destacado.categoria.nombre }}</span>
-                        </li>
+                <ul class="list-unstyled">
 
-                        <li>
-                            <i class="bi bi-check-circle text-success me-2"></i>
-                            <span>Finca:</span>
-                            <span>{{ destacado.finca.nombre }}</span>
-                        </li>
+                    <li>
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        Producto más vendido
+                    </li>
 
-                        <li>
-                            <i class="bi bi-check-circle text-success me-2"></i>
-                            <span>Peso:</span>
-                            <span>{{ destacado.peso }} kg</span>
-                        </li>
+                    <li>
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        <span>Categoría:</span>
+                        <span>{{ destacado.id_categoria.nombre_categoria }}</span>
 
-                        <li>
-                            <i class="bi bi-check-circle text-success me-2"></i>
-                            Calidad garantizada
-                        </li>
+                    </li>
 
-                    </ul>
+                    <li>
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        <span>Finca:</span>
+                        <span>
+                            {% if finca_destacado %}
+                            {{ destacado.finca.nombre_finca }}
+                            {% else %}
+                            No disponible
+                            {% endif %}
+                        </span>
+                    </li>
 
-                </div>
+                    <li>
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        <span>Peso:</span>
+                        <span>{{ destacado.peso_kg }} kg</span>
+                    </li>
 
-                <div class="col-md-6">
+                    <li>
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        Calidad garantizada
+                    </li>
 
-                    <h3 class="text-success">
-                        ${{ destacado.precio }}
-                    </h3>
+                </ul>
 
-                    <p class="text-muted">
-                        Disponible: {{ destacado.stock }}
-                    </p>
+            </div>
 
-                    <a href="{% url 'detalle_producto' destacado.id %}"
-                       class="btn btn-lg"
-                       style="background: #2f6b31; color: white; border-radius: 12px;">
+            <div class="col-md-6">
 
-                        <i class="bi bi-eye me-2"></i>
-                        Ver producto
+                <h3 class="text-success">
+                    ${{ destacado.precio }}
+                </h3>
 
-                    </a>
+                <p class="text-muted">
+                    Disponible: {{ destacado.stock }}
+                </p>
 
-                </div>
+                <a href="{% url 'detalle_producto' destacado.id_producto %}" class="btn btn-lg"
+                    style="background: #2f6b31; color: white; border-radius: 12px;">
+
+                    <i class="bi bi-eye me-2"></i>
+                    Ver producto
+
+                </a>
 
             </div>
 
@@ -86,5 +89,7 @@
 
     </div>
 
-</section>
+</div>
+
+
 {% endif %}

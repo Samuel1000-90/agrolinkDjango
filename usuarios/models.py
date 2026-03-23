@@ -72,7 +72,7 @@ class Asesor(models.Model):
 
 
 
-class Administradore(models.Model):
+class Administrador(models.Model):
     id_usuario = models.OneToOneField(Usuario, models.DO_NOTHING, db_column='id_usuario', primary_key=True)
     privilegios_admin = models.CharField(max_length=200, blank=True, null=True)
 

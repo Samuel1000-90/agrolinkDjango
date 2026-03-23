@@ -52,11 +52,17 @@ class Producto(models.Model):
         managed = False
         db_table = 'tb_productos'
 
+    def finca(self):
+        pf = self.fincas.select_related('id_finca').first()
+        return pf.id_finca if pf else None
+
     def __str__(self):
         return self.nombre_producto
     
-    def imagen_principal(self):
-        return self.imagenProducto.filter(es_principal=True).first()
+    def imagen_principal_url(self):
+        img = self.imagenProducto.filter(es_principal=1).first()
+        return img.url_imagen.url if img else None
+
 
 
 

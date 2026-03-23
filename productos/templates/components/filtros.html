@@ -19,9 +19,11 @@
                         <div class="collapse mt-3" id="categoriaFilter">
                             <select name="categoria" class="form-select form-select-sm">
                                 <option value="">Todas las categorías</option>
+                                {% for cat in categorias %}
                                 <option>
-                                    Categoría
+                                    {{cat.nombre_categoria}}
                                 </option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
