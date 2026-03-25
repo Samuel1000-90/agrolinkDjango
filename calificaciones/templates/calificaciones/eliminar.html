@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>¿Eliminar calificación?</h2>
+
+<p>{{ calificacion }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
