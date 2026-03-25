@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F1F8E9;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Tarjetas */
+.card {
+    background: white;
+    border-left: 6px solid #2E7D32;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #2E7D32;
+}
+
+/* Botones */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-verde {
+    background-color: #2E7D32;
+    color: white;
+}
+
+.btn-rojo {
+    background-color: #c62828;
+    color: white;
+}
+
+/* Estrellas */
+.estrellas {
+    color: #FFD54F;
+    font-size: 20px;
+}
+
+/* Formulario */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

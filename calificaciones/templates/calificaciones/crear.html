@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Calificación</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🌱 Nueva Calificación</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Referencia</label>
+        <input type="text" name="nombre" placeholder="Ej: Juan - Vendedor">
+
+        <label>Tipo</label>
+        <select name="tipo">
+            <option value="Vendedor">Vendedor</option>
+            <option value="Transportista">Transportista</option>
+            <option value="Producto">Producto</option>
+        </select>
+
+        <label>Puntuación</label>
+        <input type="number" name="puntuacion" min="1" max="5">
+
+        <label>Comentario</label>
+        <textarea name="comentario" placeholder="Escribe tu opinión..."></textarea>
+
+        <button type="submit" class="btn-guardar">Guardar 🌱</button>
+    </form>
+
+</div>
+
+</body>
+</html>

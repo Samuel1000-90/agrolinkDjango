@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>🌾 Calificaciones</h1>
+
+    {% for c in calificaciones %}
+    <div class="card">
+        <h3>{{ c.tipo }}</h3>
+
+        <div class="estrellas">
+            {% for i in "12345" %}
+                {% if forloop.counter <= c.puntuacion %}
+                    ⭐
+                {% else %}
+                    ☆
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <p>{{ c.comentario }}</p>
+        <small>{{ c.fecha }}</small>
+
+        <br>
+        <a href="{% url 'editar_calificacion' c.id %}" class="btn btn-verde">Editar</a>
+        <a href="{% url 'eliminar_calificacion' c.id %}" class="btn btn-rojo">Eliminar</a>
+    </div>
+    {% endfor %}
+</div>
