@@ -1,5 +1,5 @@
 """
-URL configuration for agrolink2026 project.
+URL configuration for calificaciones project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -15,16 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path , include
-from django.conf import settings
-from django.conf.urls.static import static
-
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('usuarios.urls')),  # 👈 login, register
-    path('productos/', include('productos.urls')),  # 👈 productos
-    path('calificaciones/', include('calificaciones.urls')),  # 👈 calificaciones
+    path('', views.lista_calificaciones, name='lista_calificacion'),
+    path('crear/', views.crear_calificacion, name='crear_calificacion'),
+    path('editar/<int:id>/', views.editar_calificacion, name='editar_calificacion'),
+    path('eliminar/<int:id>/', views.eliminar_calificacion, name='eliminar_calificacion'),
+    path('', views.lista_calificaciones, name='lista_calificacion'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

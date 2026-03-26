@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'agrolink2026.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_agrolink',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'agro',
         'USER': 'root',
-        'PASSWORD': '1234',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3307',
+        'PORT': '3306',
     }
 }
 
