@@ -1,35 +1,53 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/calificaciones.css' %}">
+<a href="{% url 'crear_calificacion' producto.id %}" class="btn-calificar">
+    ⭐ Calificar
+</a>
 
-<div class="navbar">
-    🌱 AgroLink | Sistema de Calificaciones
-</div>
+<div class="contenedor-calificaciones">
 
-<div class="container">
-    <h1>⭐ Opiniones de Usuarios</h1>
+    <h2 class="titulo">⭐ Opiniones de clientes</h2>
 
-    {% for c in calificaciones %}
-    <div class="card">
+    {% for calificacion in calificaciones %}
+    <div class="card-calificacion">
 
-        <div class="estrellas">
-            {% for i in "12345" %}
-                {% if forloop.counter <= c.puntaje %}
-                    ⭐
-                {% else %}
-                    ☆
-                {% endif %}
-            {% endfor %}
+        <!-- HEADER -->
+        <div class="header-calificacion">
+
+            <div class="usuario">
+                <div class="avatar">👤</div>
+                <span>{{ calificacion.usuario.username }}</span>
+            </div>
+
+            <!-- ESTRELLAS -->
+            <div class="estrellas">
+                {% for i in "12345" %}
+                    {% if calificacion.puntaje >= forloop.counter %}
+                        <span class="estrella llena">★</span>
+                    {% else %}
+                        <span class="estrella">☆</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
         </div>
 
-        <p><strong>💬 Comentario:</strong> {{ c.comentario }}</p>
-        <small>📅 {{ c.fecha }}</small>
+        <!-- PRODUCTO -->
+        <h4 class="producto">{{ calificacion.producto.nombre }}</h4>
 
-        <br><br>
+        <!-- COMENTARIO -->
+        <div class="comentario">
+            "{{ calificacion.comentario }}"
+        </div>
 
-        <a href="{% url 'editar_calificacion' c.id_calificacion %}" class="btn btn-verde">✏️ Editar</a>
-        <a href="{% url 'eliminar_calificacion' c.id_calificacion %}" class="btn btn-rojo">🗑️ Eliminar</a>
+        <!-- FECHA -->
+        <div class="fecha">
+            {{ calificacion.fecha|date:"d/m/Y H:i" }}
+        </div>
 
     </div>
+    {% empty %}
+        <p class="sin-comentarios">No hay calificaciones aún 😢</p>
     {% endfor %}
+
 </div>

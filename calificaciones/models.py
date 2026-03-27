@@ -1,11 +1,13 @@
-from django.db import models    
-class Calificacion(models.Model):
-    id_calificacion = models.AutoField(primary_key=True)
-    
-    @property
-    def id(self):
-        return self.id_calificacion
+from django.db import models
+from productos.models import Producto
+from django.contrib.auth.models import User
 
-    class Meta:
-        managed = False
-        db_table = 'tb_calificacion'
+class Calificacion(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="calificaciones")
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    puntaje = models.IntegerField()
+    comentario = models.TextField(blank=True, null=True)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.usuario} - {self.producto} ({self.puntaje})"
